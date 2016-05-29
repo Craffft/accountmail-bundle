@@ -1,0 +1,3 @@
+services:
+    craffft.accountmail.util.helpwizard:
+        class: Craffft\AccountmailBundle\Util\Helpwizard

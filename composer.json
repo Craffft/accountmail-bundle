@@ -1,0 +1,34 @@
+{
+    "name": "craffft/accountmail-bundle",
+    "type": "symfony-bundle",
+    "description": "Contao 4 accountmail bundle",
+    "keywords": ["email", "account", "member", "user"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Daniel Kiesel",
+            "homepage": "https://github.com/iCodr8"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/Craffft/accountmail-bundle/issues",
+        "source": "https://github.com/Craffft/accountmail-bundle"
+    },
+    "require": {
+        "php": ">=5.4.0",
+        "contao/core-bundle": "~4.1"
+    },
+    "conflict": {
+        "contao/core": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Craffft\\AccountmailBundle\\": "src/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-develop": "4.2.x-dev"
+        }
+    }
+}
