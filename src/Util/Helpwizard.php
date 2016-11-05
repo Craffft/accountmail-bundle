@@ -13,7 +13,7 @@ namespace Craffft\AccountmailBundle\Util;
 
 use Contao\Controller;
 
-class Helpwizard extends Controller
+class Helpwizard
 {
     /**
      * @return array
@@ -39,8 +39,8 @@ class Helpwizard extends Controller
     {
         $arrReferences = array();
 
-        $this->loadLanguageFile($strTable);
-        $this->loadDataContainer($strTable);
+        Controller::loadLanguageFile($strTable);
+        Controller::loadDataContainer($strTable);
 
         if (isset($GLOBALS['TL_DCA'][$strTable]['fields']) && is_array($GLOBALS['TL_DCA'][$strTable]['fields'])) {
             foreach ($GLOBALS['TL_DCA'][$strTable]['fields'] as $strField => $arrValues) {
