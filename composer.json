@@ -1,6 +1,6 @@
 {
     "name": "craffft/accountmail-bundle",
-    "type": "symfony-bundle",
+    "type": "contao-bundle",
     "description": "Contao 4 accountmail bundle",
     "keywords": ["email", "account", "member", "user"],
     "license": "MIT",
