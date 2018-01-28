@@ -15,8 +15,8 @@
         "source": "https://github.com/Craffft/accountmail-bundle"
     },
     "require": {
-        "php": ">=5.4.0",
-        "contao/core-bundle": "~4.1"
+        "php": ">=7.1",
+        "contao/core-bundle": "~4.4"
     },
     "conflict": {
         "contao/core": "*"
@@ -24,11 +24,6 @@
     "autoload": {
         "psr-4": {
             "Craffft\\AccountmailBundle\\": "src/"
-        }
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-develop": "4.2.x-dev"
         }
     }
 }
