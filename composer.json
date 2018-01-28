@@ -18,7 +18,17 @@
     "require": {
         "php": ">=7.1",
         "contao/core-bundle": "~4.4",
-        "craffft/craffft/translation-fields-bundle": "~1.7"
+        "craffft/craffft/translation-fields-bundle": "~1.8"
+    },
+    "require-dev": {
+        "contao/manager-plugin": "^2.0"
+    },
+    "conflict": {
+        "contao/core": "*",
+        "contao/manager-plugin": "<2.0 || >=3.0"
+    },
+    "extra": {
+        "contao-manager-plugin": "Craffft\\AccountmailBundle\\ContaoManager\\Plugin"
     },
     "autoload": {
         "psr-4": {
