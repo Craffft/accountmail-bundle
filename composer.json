@@ -3,6 +3,7 @@
     "type": "contao-bundle",
     "description": "Contao 4 accountmail bundle",
     "keywords": ["email", "account", "member", "user"],
+    "homepage":"https://craffft.de",
     "license": "MIT",
     "authors": [
         {
@@ -16,10 +17,8 @@
     },
     "require": {
         "php": ">=7.1",
-        "contao/core-bundle": "~4.4"
-    },
-    "conflict": {
-        "contao/core": "*"
+        "contao/core-bundle": "~4.4",
+        "craffft/craffft/translation-fields-bundle": "~1.7"
     },
     "autoload": {
         "psr-4": {
