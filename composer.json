@@ -28,11 +28,23 @@
         "contao/manager-plugin": "<2.0 || >=3.0"
     },
     "extra": {
+        "branch-alias": {
+            "dev-4.5": "4.5.x-dev"
+        },
         "contao-manager-plugin": "Craffft\\AccountmailBundle\\ContaoManager\\Plugin"
     },
     "autoload": {
         "psr-4": {
             "Craffft\\AccountmailBundle\\": "src/"
-        }
+        },
+        "classmap": [
+            "src/Resources/contao/"
+        ],
+        "exclude-from-classmap": [
+            "src/Resources/contao/config/",
+            "src/Resources/contao/dca/",
+            "src/Resources/contao/languages/",
+            "src/Resources/contao/templates/"
+        ]
     }
 }
