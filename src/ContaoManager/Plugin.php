@@ -4,8 +4,9 @@ declare(strict_types=1);
 
 namespace Craffft\AccountmailBundle\ContaoManager;
 
-use Contao\ManagerPlugin\Bundle\Config\BundleConfig;
+use Contao\CoreBundle\ContaoCoreBundle;
 use Contao\ManagerPlugin\Bundle\BundlePluginInterface;
+use Contao\ManagerPlugin\Bundle\Config\BundleConfig;
 use Contao\ManagerPlugin\Bundle\Parser\ParserInterface;
 use Craffft\AccountmailBundle\CraffftAccountmailBundle;
 use Craffft\TranslationFieldsBundle\CraffftTranslationFieldsBundle;
