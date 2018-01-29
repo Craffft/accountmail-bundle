@@ -97,7 +97,7 @@ if (is_array($GLOBALS['TL_EMAIL'])) {
             'exclude'   => true,
             'inputType' => 'TranslationTextArea',
             'reference' => $arrReferences,
-            'eval'      => array('mandatory' => true, 'helpwizard' => true, 'rte' => 'tinyFlash', 'tl_class' => 'clr')
+            'eval'      => array('mandatory' => true, 'helpwizard' => true, 'rte'=>'tinyMCE', 'tl_class' => 'clr')
         );
     }
 }
