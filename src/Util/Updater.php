@@ -12,17 +12,36 @@
 namespace Craffft\AccountmailBundle\Util;
 
 use Contao\ClassLoader;
+use Contao\Config;
 use Contao\Controller;
+use Contao\Database;
 use Contao\System;
 use TranslationFields\TranslationFieldsModel;
 
-class Updater extends Controller
+class Updater
 {
-    public function __construct()
+    /**
+     * Add translation field database table and fields if the are not existing already
+     */
+    public function addTranslationFieldTableAndFields()
     {
-        parent::__construct();
+        $db = Database::getInstance();
 
-        $this->import('Config');
+        if (!$db->tableExists('tl_translation_fields')) {
+            $sql = trim("
+                CREATE TABLE `tl_translation_fields` (
+                  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+                  `tstamp` int(10) unsigned NOT NULL DEFAULT '0',
+                  `fid` int(10) unsigned NOT NULL DEFAULT '0',
+                  `language` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+                  `content` text COLLATE utf8mb4_unicode_ci NOT NULL,
+                  PRIMARY KEY (`id`),
+                  UNIQUE KEY `fid_language` (`fid`,`language`),
+                  KEY `fid` (`fid`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+            ");
+            $db->execute($sql);
+        }
     }
 
     /**
@@ -30,7 +49,8 @@ class Updater extends Controller
      */
     public function addDefaultEmailContents()
     {
-        $this->addContentToField('emailFrom', $this->Config->get('adminEmail'));
+        $config = Config::getInstance();
+        $this->addContentToField('emailFrom', $config->get('adminEmail'));
         $this->addContentToField('emailNewMemberTemplate', 'mail_default');
         $this->addContentToField('emailChangedMemberPasswordTemplate', 'mail_default');
         $this->addContentToField('emailNewUserTemplate', 'mail_default');
@@ -47,8 +67,10 @@ class Updater extends Controller
      */
     protected function addContentToField($strField, $strValue)
     {
-        if ($this->Config->get($strField) === null) {
-            $this->Config->persist($strField, $strValue);
+        $config = Config::getInstance();
+
+        if ($config->get($strField) === null) {
+            $config->persist($strField, $strValue);
         }
     }
 
@@ -73,7 +95,9 @@ class Updater extends Controller
      */
     protected function addTranslationContentToField($strField)
     {
-        if ($this->Config->get($strField) === null) {
+        $config = Config::getInstance();
+
+        if ($config->get($strField) === null) {
             $arrValues = array();
 
             System::loadLanguageFile('tl_email', 'de', true);
@@ -94,7 +118,7 @@ class Updater extends Controller
             // Load translation file by current language
             System::loadLanguageFile('tl_email', null, true);
 
-            $this->Config->persist(
+            $config->persist(
                 $strField,
                 TranslationFieldsModel::saveValuesAndReturnFid($arrValues)
             );

@@ -10,4 +10,5 @@
  */
 
 $updater = new Craffft\AccountmailBundle\Util\Updater();
+$updater->addTranslationFieldTableAndFields();
 $updater->addDefaultEmailContents();
