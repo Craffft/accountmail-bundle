@@ -78,9 +78,18 @@ class Updater extends Controller
 
             System::loadLanguageFile('tl_email', 'de', true);
             $arrValues['de'] = $GLOBALS['TL_LANG']['tl_email']['defaultContents'][$strField];
+            $arrValues['de_AT'] = $GLOBALS['TL_LANG']['tl_email']['defaultContents'][$strField];
+            $arrValues['de_CH'] = $GLOBALS['TL_LANG']['tl_email']['defaultContents'][$strField];
+            $arrValues['de_DE'] = $GLOBALS['TL_LANG']['tl_email']['defaultContents'][$strField];
 
             System::loadLanguageFile('tl_email', 'en', true);
             $arrValues['en'] = $GLOBALS['TL_LANG']['tl_email']['defaultContents'][$strField];
+            $arrValues['en_AU'] = $GLOBALS['TL_LANG']['tl_email']['defaultContents'][$strField];
+            $arrValues['en_CA'] = $GLOBALS['TL_LANG']['tl_email']['defaultContents'][$strField];
+            $arrValues['en_GB'] = $GLOBALS['TL_LANG']['tl_email']['defaultContents'][$strField];
+            $arrValues['en_IE'] = $GLOBALS['TL_LANG']['tl_email']['defaultContents'][$strField];
+            $arrValues['en_US'] = $GLOBALS['TL_LANG']['tl_email']['defaultContents'][$strField];
+            $arrValues['en_ZA'] = $GLOBALS['TL_LANG']['tl_email']['defaultContents'][$strField];
 
             // Load translation file by current language
             System::loadLanguageFile('tl_email', null, true);
