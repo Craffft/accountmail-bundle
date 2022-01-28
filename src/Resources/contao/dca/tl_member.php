@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+\Contao\System::loadLanguageFile('tl_member');
+
 // Config
 $GLOBALS['TL_DCA']['tl_member']['config']['onload_callback'][] = array(
     'Craffft\\AccountmailBundle\\Account\\Member\\Account',

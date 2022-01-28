@@ -11,15 +11,20 @@
 
 namespace Craffft\AccountmailBundle\Util;
 
-use Contao\ClassLoader;
 use Contao\Config;
-use Contao\Controller;
 use Contao\Database;
 use Contao\System;
 use TranslationFields\TranslationFieldsModel;
 
 class Updater
 {
+    public function canAddTranslationFieldTableAndFields()
+    {
+        $db = Database::getInstance();
+
+        return !$db->tableExists('tl_translation_fields');
+    }
+
     /**
      * Add translation field database table and fields if the are not existing already
      */
@@ -42,6 +47,29 @@ class Updater
             ");
             $db->execute($sql);
         }
+    }
+
+    public function canAddDefaultEmailContents()
+    {
+        $config = Config::getInstance();
+
+        $canAdd = $config->get('emailFrom') === null
+            || $config->get('emailNewMemberTemplate') === null
+            || $config->get('emailChangedMemberPasswordTemplate') === null
+            || $config->get('emailNewUserTemplate') === null
+            || $config->get('emailChangedUserPasswordTemplate') === null;
+
+        if ($canAdd) {
+            return true;
+        }
+
+        foreach ($this->getFieldNames() as $strField) {
+            if ($config->get('emailFrom') === null) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /**

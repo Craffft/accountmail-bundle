@@ -1,3 +1,14 @@
 services:
     craffft.accountmail.util.helpwizard:
         class: Craffft\AccountmailBundle\Util\Helpwizard
+        public: true
+
+    Craffft\AccountmailBundle\Migration\InitTranslationFieldsMigration:
+        autowire: true
+        tags:
+            - { name: contao.migration, priority: 0 }
+
+    Craffft\AccountmailBundle\Migration\AddDefaultEmailContentsMigration:
+        autowire: true
+        tags:
+            - { name: contao.migration, priority: 1 }

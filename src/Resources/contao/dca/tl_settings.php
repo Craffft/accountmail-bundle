@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+\Contao\System::loadLanguageFile('tl_settings');
+
 // Palettes
 $strPalette = '{accountmail_legend},disableMemberAccountmail,disableUserAccountmail';
 $GLOBALS['TL_DCA']['tl_settings']['palettes']['default'] = preg_replace(

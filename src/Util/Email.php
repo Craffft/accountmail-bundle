@@ -33,6 +33,11 @@ class Email extends Controller
     protected $strForceLanguage;
 
     /**
+     * @var Translator
+     */
+    protected $translator;
+
+    /**
      * @var array
      */
     protected $arrParameters = array();
@@ -48,6 +53,7 @@ class Email extends Controller
         }
 
         $this->strForceLanguage = $strForceLanguage;
+        $this->translator = new Translator();
 
         // Set default parameters
         $this->addParameter('host', Idna::decode(Environment::get('host')));
@@ -86,7 +92,7 @@ class Email extends Controller
         $objEmail = new ContaoEmail();
 
         $objEmail->from = $GLOBALS['TL_CONFIG']['emailFrom'];
-        $strEmailFromName = Translator::translateValue(
+        $strEmailFromName = $this->translator->translateValue(
             $GLOBALS['TL_CONFIG']['emailFromName'],
             $this->strForceLanguage
         );
@@ -149,7 +155,7 @@ class Email extends Controller
         $strName = ucfirst(strtolower($strName));
 
         if (isset($GLOBALS['TL_CONFIG'][$this->strType . $strName])) {
-            $strContent = Translator::translateValue(
+            $strContent = $this->translator->translateValue(
                 $GLOBALS['TL_CONFIG'][$this->strType . $strName],
                 $this->strForceLanguage
             );
