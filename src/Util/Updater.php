@@ -64,7 +64,7 @@ class Updater
         }
 
         foreach ($this->getFieldNames() as $strField) {
-            if ($config->get('emailFrom') === null) {
+            if ($config->get($strField) === null) {
                 return true;
             }
         }
